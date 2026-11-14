@@ -33,6 +33,26 @@ Follow up: Could you solve it without converting the integer to a string?
 public class Palindrome_sum {
 
     public boolean isPalindrome(int x) {
+        String s = String.valueOf(x);
+        int n = s.length();
+        for (int i = 0; i < n/2; ++i) {
+            if (s.charAt(i) != s.charAt(n - i - 1)) {
+                return false; 
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        int num = 100021;
+        Palindrome_sum solution = new Palindrome_sum();
+        System.out.println(solution.isPalindrome(num));
+    }
+}
+
+/*
+archive
+
+public boolean isPalindrome(int x) {
         String str = Integer.toString(x);
         int i = 0;
         int j = str.length() - 1;
@@ -44,10 +64,5 @@ public class Palindrome_sum {
             --j;
         }
         return true;
-    }
-    public static void main(String[] args) {
-        int num = 10;
-        Palindrome_sum solution = new Palindrome_sum();
-        System.out.println(solution.isPalindrome(num));
-    }
-}
+
+ */
