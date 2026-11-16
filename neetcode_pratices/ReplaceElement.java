@@ -39,7 +39,7 @@ public class ReplaceElement {
                 arr[k] = -1;
                 break;
             }
-            System.out.println(Arrays.toString(Arrays.copyOfRange(arr, k + 1 , arr.length)));
+            //System.out.println(Arrays.toString(Arrays.copyOfRange(arr, k + 1 , arr.length)));
             arr[k] = findMax(Arrays.copyOfRange(arr, k + 1 , arr.length));
         }
         return arr;
