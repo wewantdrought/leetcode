@@ -1,5 +1,4 @@
 package neetcode_pratices;
-import java.util.*;
 
 /*
 You are given a binary array nums, return the maximum number of consecutive 1's in the array.
