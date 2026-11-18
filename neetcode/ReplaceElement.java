@@ -1,4 +1,4 @@
-package neetcode_pratices;
+package neetcode;
 import java.util.Arrays;
 
 /*
