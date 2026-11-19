@@ -2,6 +2,8 @@ package neetcode;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 /*
 You are keeping the scores for a baseball game with strange rules. At the beginning of the game, you start with an empty record.
@@ -56,6 +58,43 @@ For operations "C" and "D", there will always be at least one previous score on 
 
 public class Baseball {
     public int calPoints(String[] operations) {
+        Deque<Integer> ans = new ArrayDeque<>();
+        for (String s : operations) {
+            if (s.equals("C")) {
+                ans.pop();
+            } else if (s.equals("+")) {
+                int top = ans.pop();
+                int new_top = ans.peek();
+                new_top += top;
+                ans.push(top);
+                ans.push(new_top);
+            } else if (s.equals("D")) {
+                int top = ans.peek();
+                top = top * 2;
+                ans.push(top);
+            } else {
+                ans.push(Integer.parseInt(s));
+            }
+        }
+        
+        int sum = 0;
+            for (int i : ans) {
+                sum += i;
+            }
+            return sum;
+    }
+
+    public static void main(String[] args){
+        Baseball solution = new Baseball();
+        String[] ops = {"5","D","+","C"};
+        System.out.println(solution.calPoints(ops));
+    }
+
+}
+
+/*
+archive
+public int calPoints(String[] operations) {
         List<Integer> ans = new ArrayList<>();
         for (String c : operations) {
             if (c.equals("+")) {
@@ -78,11 +117,4 @@ public class Baseball {
         }
         return sum;
     }
-
-    public static void main(String[] args){
-        Baseball solution = new Baseball();
-        String[] ops = {"5","D","+","C"};
-        System.out.println(solution.calPoints(ops));
-    }
-
-}
+*/
